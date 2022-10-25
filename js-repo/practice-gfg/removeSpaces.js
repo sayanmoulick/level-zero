@@ -27,15 +27,15 @@ Constraints:
 
  */
 
-class Solution{
-    removeSpaces(s){
-        //code here
-        let strArr = s.split(' ');
-        console.log(strArr.join(''));
-        // return strArr.join('');
-    }
+class Solution {
+  removeSpaces (s) {
+    //code here
+    let strArr = s.split(' ');
+    console.log(strArr.join(''));
+    // return strArr.join('');
+  }
 }
 
 let obj = new Solution();
 // obj.removeSpaces('geeks  for geeks')
-obj.removeSpaces('    g f g')
+obj.removeSpaces('    g f g');

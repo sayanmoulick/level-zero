@@ -23,15 +23,15 @@ Constraints:
 S contains lower case English alphabets
 Words have a single space between them
  */
-class Solution{
-    firstAlphabet(str){
-        //code here
-        let firstLetterStr = str[0];
-        for(var i in str){
-            if(str[i] === ' '){
-                firstLetterStr += str[++i];
-            }
-        }
-        return firstLetterStr;
+class Solution {
+  firstAlphabet (str) {
+    //code here
+    let firstLetterStr = str[0];
+    for (var i in str) {
+      if (str[i] === ' ') {
+        firstLetterStr += str[++i];
+      }
     }
+    return firstLetterStr;
+  }
 }
