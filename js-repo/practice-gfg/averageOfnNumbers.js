@@ -1,1 +1,0 @@
-// print factors also
