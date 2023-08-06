@@ -26,6 +26,10 @@ const wordBreak = (s, wordDict) => {
   return false;
 };
 
+// This seems easy right, but the above problem exhibits overlapping sub-problems.
+// Time Complexity: The time complexity of the above code will be O(2^n).
+// Auxiliary Space: The space complexity will be O(n) as we are using recursion and the recursive call stack will take O(n) space.
+
 // DP Memoization (Added lines will have #### after them)
 
 /**
@@ -62,7 +66,7 @@ const wordBreak = (s, wordDict, memo = {}) => {
   return false;
 };
 
-// DP Tabulation
+// Optimized DP
 
 /**
  * @param {string} s
@@ -70,31 +74,30 @@ const wordBreak = (s, wordDict, memo = {}) => {
  * @return {boolean}
  */
 const wordBreak = (s, wordDict) => {
-  // Tablulation
   // Init our table, this will be boolean values since return is boolean
-  const table = Array(s.length + 1).fill(false);
+  const dp = Array(s.length + 1).fill(false);
   // Seed our simple case, this would be base case in recursive solution
   // Basically, we can make an empty string, so 0 would be true
   // In our table, each index refers to the letter before
   // So table[0] is "", table[1] is "l", table[2] is "e", if testcase is "leetcode"
-  table[0] = true;
+  dp[0] = true;
 
   // Loop table
-  for (let i = 0; i < table.length; i++) {
+  for (let i = 0; i < dp.length; i++) {
     // We only want to process if current table position is true
-    if (!table[i]) continue;
+    if (!dp[i]) continue;
 
     // Loop all letters in wordDict
-    for (let w of wordDict) {
+    for (let word of wordDict) {
       // We want to test if word matches where we are in s, and the word
       // We can slice from i to i + w.length and compare with the word
-      if (s.slice(i, i + w.length) === w) {
+      if (s.slice(i, i + word.length) === word) {
         // If we pass the condition above, and the table index we are trying to update is in bounds, update to true
-        if (i + w.length <= table.length) table[i + w.length] = true;
+        if (i + word.length <= dp.length) dp[i + word.length] = true;
       }
     }
   }
 
   // The last item in our table can be returned, as it will be updated to true if we found a solution
-  return table[s.length];
+  return dp[s.length];
 };
