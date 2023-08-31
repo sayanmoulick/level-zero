@@ -282,6 +282,22 @@ function balancedParenthesis (str_) {
   }
   //when stack is empty, it means all matching brackets are found
   return st.length === 0;
+
+  /**
+    let resStack = [];
+    let flag = false;
+    
+    for (const l of s){
+        if(l === '(' || l === '{' || l === '[') resStack.push(l);
+        else if(l === ')' || l === '}' || l === ']'){
+            if(resStack.length > 0 && bracketsMap[resStack[resStack.length - 1]] === l) resStack.pop();
+            else resStack.push(l);
+        }
+    }
+    
+    if (resStack.length === 0) flag = true;
+
+   */
 }
 
 function swap (arr, xp, yp) {
